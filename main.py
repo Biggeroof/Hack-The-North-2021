@@ -63,3 +63,4 @@ for i in range (len(sequence)):
 
 image = Image.fromarray(data)
 image.show()
+image.save("drawn.png")
