@@ -5,6 +5,7 @@ import math
 import algorithmSearch
 import numpy as np
 import scipy.misc as smp
+from colors import *
 from queue import PriorityQueue
 np.set_printoptions(threshold=sys.maxsize)
 floorPlanImage = Image.open("floorPlan.jpeg")
@@ -42,9 +43,12 @@ for row in range(n_rows):
             data[row][col] = [255,255,255]
 
 curr_row, curr_col = start_row, start_col
-
+    
 for i in range (len(sequence)):
+    data[curr_row-1][curr_col-1] = [255, 0, 0]
     data[curr_row][curr_col] = [255, 0, 0]
+    data[curr_row+1][curr_col+1] = [255, 0, 0]
+
     if(sequence[i] == 'D'):
         curr_row = curr_row - 1;
     elif(sequence[i] == 'R'):
