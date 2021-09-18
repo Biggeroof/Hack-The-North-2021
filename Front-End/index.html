@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <h1>Dummy Text</h1>
+    <label class="center dropbtn" id = imageUpload>
+        <input id="upload" class="hidden" type="file" onChange="handleImageUpload();" />
+        Upload Image
+    </label>
+    <img id="image" class="hidden" src="" />
+    <div class="dropdown">
+        <button id="button"class="dropbtn hidden">How To Use</button>
+        <div class = "dropdown-content">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, dolorum quia officia aut non placeat? Mollitia tempora, molestiae veniam dolorem harum, quasi voluptatem est quae iure libero quisquam debitis provident?</p>
+        </div>
+    </div>
+    <!--  -->
+    <button type="button" class="hidden submit dropbtn" id="submit" onclick="submit();">Submit</button>
+    <canvas id="Canvas" class="hidden center" width="1152" height="648"></canvas>
+    <script src="app.js"></script>
+</body>
+</html>
