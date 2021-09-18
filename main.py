@@ -23,37 +23,37 @@ imageArray = np.array(r, dtype=np.uint8)
 #traverse graph?
 imageArray[0][0] = -1
 imageArray[537][760] = -2
-base = len(imageArray[0])
-height = len(imageArray)
+n_cols = len(imageArray[0])
+n_rows = len(imageArray)
 
-startX, startY, endX, endY = 160, 170, 400, 400 
-sequence =  algorithmSearch.search(imageArray, startX,startY, endX, endY)
+start_row, start_col, end_row, end_col = 160, 170, 400, 400 
+sequence =  algorithmSearch.search(imageArray, start_row, start_col, end_row, end_col)
 print(sequence)
 
 #creating a new image
 # Create a 1024x1024x3 array of 8 bit unsigned integers
-data = np.zeros((height, base, 3), dtype=np.uint8)
+data = np.zeros((n_rows, n_cols, 3), dtype=np.uint8)
 
 
-for i in range(height-1):
-    for j in range(base-1):
-        if(imageArray[i][j] == 0):
-            data[i][j] = [0,0,0]
+for row in range(n_rows):
+    for col in range(n_cols):
+        if(imageArray[row][col] == 0):
+            data[row][col] = [0,0,0]
         else:
-            data[i][j] = [255,255,255]
+            data[row][col] = [255,255,255]
 
-currX, currY = startX, startY 
+curr_row, curr_col = start_row, start_col
 
 for i in range (len(sequence)):
-    data[currY][currX] = [255, 0, 0]
+    data[curr_row][curr_col] = [255, 0, 0]
     if(sequence[i] == 'D'):
-        currY = currY + 1;
+        curr_row = curr_row - 1;
     elif(sequence[i] == 'R'):
-        currX = currX + 1;
+        curr_col = curr_col + 1;
     elif(sequence[i] == 'U'):
-        currY = currY-1;
+        curr_row = curr_row +1;
     elif(sequence[i] == 'L'):
-        currX = currX-1;
+        curr_col = curr_col -1;
     
     
 # data[512, 511] = [255, 0, 0]
