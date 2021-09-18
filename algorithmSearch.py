@@ -1,63 +1,61 @@
 import queue
-base, height = 0, 0
+n_rows, n_cols = 0, 0
 visited = []
-def search(imageArray, startX, startY, endX, endY):
+def search(imageArray, start_row, start_col, end_row, end_col):
     #find the base and height of my array
-    global base 
-    base = len(imageArray)
-    global height
-    height = len(imageArray[0])
+    global n_rows 
+    n_rows = len(imageArray)
+    global n_cols
+    n_cols = len(imageArray[0])
     #initailize the visited array, make it all 1e9, this array also doubles as a distance array
     global visited
-    visited = [[1 for x in range(height)] for y in range(base)]
+    visited = [[1 for x in range(n_cols)] for y in range(n_rows)]
     #start my dfs
-    visited[startX][startY] = 0
-    return bfs(startX, startY, imageArray, endX, endY)
+    visited[start_row][start_col] = 0
+    return bfs(start_row, start_col, imageArray, end_row, end_col)
 #   print("{}{}".format(len(visited) , len(visited[0])))
 #     for i in visited:
 #         print()
 #         for y in i:
 #             print(y, end="")
-def bfs(startX, startY, imageArray, endX, endY):#'1' means white, '0' means black
-    dx = [-1, 0, 1, 0]
-    dy = [0, -1, 0, 1]
-    n = len(imageArray)
-    m = len(imageArray[0])
-    dis = [[1e9 for x in range(m)] for y in range(n)]
-    pre = [[-1 for x in range(m)] for y in range(n)]
-    dis[startX][startY] = 0
+def bfs(start_row, start_col, imageArray, end_row, end_col):#'1' means white, '0' means black
+    d_row = [-1, 0, 1, 0]
+    d_col = [0, -1, 0, 1]
+    dis = [[1e9 for x in range(n_cols)] for y in range(n_rows)]
+    pre = [[-1 for x in range(n_cols)] for y in range(n_rows)]
+    dis[start_row][start_col] = 0
     q = []
-    q.append((startX,startY))
+    q.append((start_row,start_col))
     while(len(q) > 0):
-        x, y = q[0][0], q[0][1]
+        row, col = q[0][0], q[0][1]
         q.pop(0)
         for i in range(4):
-            new_x = x + dx[i]
-            new_y = y + dy[i]
+            new_row = row + d_row[i]
+            new_col = col + d_col[i]
             #if(new_x >= 0 and new_x < n and new_y >= 0 and new_y < m and imageArray[new_x][new_y] == 1 and dis[new_x][new_y] > dis[x][y]+1 and check(new_x, new_y, imageArray)):
-            if(new_x >= 0 and new_x < n and new_y >= 0 and new_y < m and imageArray[new_x][new_y] == 1 and dis[new_x][new_y] > dis[x][y]+1) :
-                dis[new_x][new_y] = dis[x][y] + 1
-                pre[new_x][new_y] = i
-                q.append((new_x, new_y))
+            if(new_row >= 0 and new_row < n_rows and new_col >= 0 and new_col < n_cols and imageArray[new_row][new_col] == 1 and dis[new_row][new_col] > dis[row][col]+1) :
+                dis[new_row][new_col] = dis[row][col] + 1
+                pre[new_row][new_col] = i
+                q.append((new_row, new_col))
     
-    path_len = dis[endX][endY]
+    path_len = dis[end_row][end_col]
     sequence = ""
-    x = endX
-    y = endY
-    while(x!= startX or y!= startY):
-        if(pre[x][y] == 0):
+    row = end_row
+    col = end_col
+    while(row!= start_row or col!= start_col):
+        if(pre[row][col] == 0):
 #             print("HERE")
-            sequence += "L"
-            x = x+1
-        elif(pre[x][y] == 1):
-            sequence += "L"
-            y = y+1
-        elif(pre[x][y] == 2):
-            sequence += "R"
-            x = x-1
-        elif(pre[x][y] == 3):
             sequence += "D"
-            y = y-1
+            row = row + 1
+        elif(pre[row][col] == 1):
+            sequence += "L"
+            col = col + 1
+        elif(pre[row][col] == 2):
+            sequence += "U"
+            row = row - 1
+        elif(pre[row][col] == 3):
+            sequence += "R"
+            col = col - 1 
         else:
             print("Impossible")
             exit()
@@ -67,7 +65,7 @@ def bfs(startX, startY, imageArray, endX, endY):#'1' means white, '0' means blac
 #     print(startY)
 #     print(endX)
 #     print(endY)
-    return sequence
+    return sequence[::-1]
             
 def check(x, y, imageArray):
     n = len(imageArray)
