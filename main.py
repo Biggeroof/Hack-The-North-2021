@@ -5,7 +5,6 @@ import math
 import algorithmSearch
 import numpy as np
 import scipy.misc as smp
-from colors import *
 from queue import PriorityQueue
 np.set_printoptions(threshold=sys.maxsize)
 floorPlanImage = Image.open("floorPlan.jpeg")
