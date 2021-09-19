@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Finding Algorithm</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <h1 id="title">Path Finding App</h1>
+    <label class="center imageUpload" id = imageUpload>
+        <input id="upload" class="hidden" type="file" onChange="handleImageUpload();" />
+        Upload Image
+    </label>
+    <img id="image" class="hidden" src="" />
+    <div class="dropdown">
+        <button id="button"class="dropbtn hidden">How To Use</button>
+        <div class = "dropdown-content">
+            <p>test text</p>
+        </div>
+    </div>
+    <button type="button" class="hidden submit dropbtn" id="submit" onclick= "sub();">Submit</button>
+    <canvas id="Canvas" class="hidden center" width="768" height="538"></canvas>
+    <script src="app.js"></script>
+</body>
+</html>
