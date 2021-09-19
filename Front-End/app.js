@@ -1,7 +1,3 @@
-// TO DO
-// FORMAT THE SITE BETTER 
-//find a way to send the markers array to python
-
 var canvas = document.getElementById('Canvas');
 var context = canvas.getContext("2d");
 var img = document.getElementById("image");
