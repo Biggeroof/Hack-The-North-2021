@@ -77,7 +77,7 @@ var draw = function () {
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     // Draw map
-    context.drawImage(img, 0, 0, 1152, 648);
+    context.drawImage(img, 0, 0, 768, 538);
 
     // Draw markers
     for (var i = 0; i < Markers.length; i++) {
