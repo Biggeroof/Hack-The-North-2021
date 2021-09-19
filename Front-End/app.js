@@ -5,6 +5,7 @@ var text = document.getElementById("text");
 var input = document.getElementById("upload");
 var button = document.getElementById("button");
 var submit = document.getElementById("submit");
+var title = document.getElementById("title");
 
 //image input
 function handleImageUpload() {
@@ -20,6 +21,7 @@ var image = document.getElementById("upload").files[0];
         submit.classList.remove("hidden");
         img.classList.add("hidden");
         input.classList.add("hidden");
+        title.classList.add("hidden");
     }
 
     reader.readAsDataURL(image);
