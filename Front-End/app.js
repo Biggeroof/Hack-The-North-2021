@@ -35,6 +35,12 @@ var Marker = function () {
     this.YPos = 0;
 }
 
+function sub() {
+    setTimeout(() => {
+        return window.location.assign("end.html");
+    }, 500);
+}
+
 var Markers = new Array();
 
 var mouseClicked = function (mouse) {
@@ -100,6 +106,3 @@ var draw = function () {
 
 setInterval(main, (1000 / 60)); // Refresh 60 times a second
 
-function submit() {
-
-}
